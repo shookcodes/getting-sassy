@@ -1,12 +1,20 @@
 import { createApp } from "vue";
 import "./styles/style.scss";
 import App from "./App.vue";
-import FontawesomePlugin from "./plugins/fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { fontAwesomeLib } from "./utils/fontawesome";
 
-createApp(App).mount("#app");
+// Add your FontAwesome icons to the library
+fontAwesomeLib();
 
+// Create your Vue app instance
 const app = createApp(App);
+
+// Register the FontAwesomeIcon component globally
+app.component("FontAwesomeIcon", FontAwesomeIcon);
+
+// Mount your app to the DOM
 
 app.mount("#app");
 // Register FontawesomePlugin as a plugin
-app.use(FontawesomePlugin);
+// app.use(FontawesomePlugin);

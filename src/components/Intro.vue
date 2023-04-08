@@ -4,13 +4,10 @@
       <span>Let's </span> <span>get</span>
       <div class="sassy">
         <FontAwesomeIcon icon="fa-brands fa-sass" class="sass-icon" />
-        <!-- <FaSass class="w-40 h-40 text-sassy" /> -->
         <span class="sass-y">-y</span>
       </div>
     </h1>
-    <div class="animatedPizza">
-      <div class="pepperoni"></div>
-    </div>
+    <PepperoniPizza />
     <div>
       <h2 class="subline">with pizza animations!</h2>
     </div>
@@ -18,16 +15,8 @@
   </div>
 </template>
 
-<script>
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
-console.log("AWE", FontAwesomeIcon);
-export default {
-  components: {
-    FontAwesomeIcon,
-  },
-};
-// import { FaSass } from "react-icons/fa";
+<script setup>
+import PepperoniPizza from "./PepperoniPizza.vue";
 // import Button from "./Button";
 </script>
 
@@ -48,13 +37,15 @@ export default {
   font-size: 3rem;
   display: flex;
   align-items: center;
-  transform: rotate(-20deg);
-  border: 2px solid white;
-  gap: 0.4rem;
-  animation: titleEntrance 1s ease-in forwards;
+  transform: rotate(-20deg) translate(-15vw, 0);
+  gap: 1rem;
+  overflow: visible;
+
   @for $i from 1 through 3 {
-    &:nth-child(#{$i}) {
-      border: calc($i * 5px) solid yellow;
+    & :nth-child(#{$i}) {
+      opacity: 0;
+      animation: titleEntrance 3s ease-in forwards 0.5s;
+      animation-delay: ($i - 1) * 0.8s;
     }
   }
 }
@@ -63,19 +54,25 @@ export default {
   display: flex;
   align-items: center;
   margin-left: 1rem;
-  transform: rotate(10deg);
-  .sass-icon {
-    width: 160px;
-    color: $sassy;
-  }
+  overflow: visible;
+  // transform: rotate(10deg);
+}
 
-  .sass-y {
-    color: $sassy;
-    font-family: $sassyFont;
-    font-weight: bold;
-    font-size: 4.5rem;
-    transform: rotate(-20deg);
-  }
+.sass-icon {
+  width: 160px;
+  height: max-content;
+  color: $sassy;
+  transform: rotate(10deg);
+  overflow: visible;
+}
+.sass-y {
+  margin-top: 1rem;
+  margin-left: -1rem;
+  color: $sassy;
+  font-family: $sassyFont;
+  font-weight: bold;
+  font-size: 4.5rem;
+  transform: rotate(-10deg);
 }
 
 .subline {
@@ -92,7 +89,7 @@ export default {
   justify-content: center;
   align-items: center;
 
-  animation: growIn 1s ease-in forwards;
+  // animation: growIn 1s ease-in forwards;
 
   &::before {
     content: "";
@@ -103,7 +100,7 @@ export default {
     padding: 12px;
     border-radius: 100%;
     background-color: $pizzaCheese;
-    animation: growIn 0.8s ease-in forwards;
+    // animation: growIn 0.8s ease-in forwards;
   }
 
   .pepperoni {
@@ -116,8 +113,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: growIn 0.8s ease-in forwards,
-      rotateCounterClockwise 60s linear infinite;
+    // animation: growIn 0.8s ease-in forwards,
+    //   rotateCounterClockwise 60s linear infinite;
 
     &::before {
       content: "";
@@ -128,7 +125,7 @@ export default {
       margin: auto;
       border: 23px dotted $pepperoni;
       border-radius: 100%;
-      animation: growIn 1s ease-in forwards, rotateClockwise 30s linear infinite;
+      // animation: growIn 1s ease-in forwards, rotateClockwise 30s linear infinite;
     }
 
     &::after {
@@ -146,10 +143,21 @@ export default {
 
 @keyframes titleEntrance {
   0% {
-    transform: rotate(-20deg) translateX(120vw);
+    opacity: 0;
+    // same as transform: translateX(120vw) translateY(-100vh);
+    transform: translate(120vw, -100vh);
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    font-weight: bold;
+    transform: scale(1.5);
   }
   100% {
-    transform: rotate(-20deg) translateX(-20vw);
+    opacity: 1;
+    font-weight: normal;
+    transform: scale(1) translate(0);
   }
 }
 
