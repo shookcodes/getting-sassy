@@ -1,16 +1,23 @@
 <template>
-  <TransitionGroup name="views">
-    <div class="view" v-for="(view, index) in views" :key="view">
-      <div v-if="index === currentIndex">
-        <component
-          :is="view"
-          :key="index"
-          :current-index="currentIndex"
-          :end-animation="clicked"
-          :onUpdateIndex="(value) => setCurrentIndex(value)" />
+  <div class="view">
+    <TransitionGroup name="views">
+      <div v-for="(view, index) in views" :key="view">
+        <div
+          :class="
+            index === currentIndex
+              ? 'views-enter views-enter-active'
+              : 'views-leave-to views-leave-active'
+          ">
+          <component
+            :is="view"
+            :key="index"
+            :current-index="currentIndex"
+            :end-animation="clicked"
+            :onUpdateIndex="(value) => setCurrentIndex(value)" />
+        </div>
       </div>
-    </div>
-  </TransitionGroup>
+    </TransitionGroup>
+  </div>
 </template>
 
 <script setup>
@@ -59,5 +66,10 @@ onBeforeUnmount(() => {
 .views-leave-to {
   opacity: 0;
   transform: translateX(-200vw);
+}
+
+.views-enter-active,
+.views-leave-active {
+  transition: all 0.5s ease;
 }
 </style>

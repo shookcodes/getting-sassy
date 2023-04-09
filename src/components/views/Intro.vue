@@ -25,14 +25,11 @@
 <script setup>
 import PepperoniPizza from "@/components/PepperoniPizza.vue";
 import Button from "@/components/Button.vue";
-import { onMounted, ref } from "vue";
 
 const props = defineProps({
   currentIndex: Number,
   endAnimation: Boolean,
 });
-
-const clicked = ref(false);
 
 const emit = defineEmits({
   "update-index": (index) => typeof index === "number",

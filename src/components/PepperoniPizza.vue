@@ -57,7 +57,6 @@ const props = defineProps({
     z-index: auto;
     width: 200px;
     height: 200px;
-    border: 2px solid green;
     border: 32px dotted $pepperoni;
     border-radius: 100%;
     z-index: 100;
