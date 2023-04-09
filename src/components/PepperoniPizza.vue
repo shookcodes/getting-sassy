@@ -1,11 +1,22 @@
 <template>
-  <div class="animatedPizza">
-    <div class="pepperoni"></div>
+  <div :class="['animatedPizza', endAnimation ? 'end-animation' : '']">
+    <div :class="['pepperoni', endAnimation ? 'end-animation' : '']"></div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+const props = defineProps({
+  endAnimation: Boolean,
+});
+</script>
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
+
+@mixin end-pizza {
+  animation: none;
+  animation-delay: 0;
+  opacity: 1;
+  transform: scale(1) translate(0);
+}
 
 .animatedPizza {
   position: relative;
@@ -22,6 +33,12 @@
 
   animation: growIn 1s ease-in forwards 5s;
 
+  &.end-animation {
+    @include end-pizza;
+    &::before {
+      @include end-pizza;
+    }
+  }
   &::before {
     content: "";
     position: absolute;
@@ -50,15 +67,25 @@
     align-items: center;
     animation: growIn 0.8s ease-in forwards 6.8s,
       rotateCounterClockwise 60s linear infinite;
+    &.end-animation {
+      @include end-pizza;
+      animation: rotateCounterClockwise 60s linear infinite;
 
+      &::before {
+        @include end-pizza;
+        animation: rotateClockwise 30s linear infinite;
+      }
+
+      &::after {
+        @include end-pizza;
+        animation: rotateCounterClockwise 30s linear infinite;
+      }
+    }
     &::before {
       content: "";
       position: absolute;
-      //   width: 55%;
-      //   height: 55%;
       width: 120px;
       height: 120px;
-      //   padding: 23px;
       opacity: 0;
       margin: auto;
       overflow: visible;
@@ -76,25 +103,12 @@
       position: absolute;
       width: 40px;
       height: 40px;
-      //   margin: 32px;
       opacity: 0;
-      //   margin: auto;
-
       overflow: visible;
       border: 25px dotted $pepperoni;
-      //   border: 2px solid green;
       border-radius: 100%;
       animation: growIn 1s ease-in forwards 7.2s,
         rotateCounterClockwise 30s linear infinite;
-      //   content: "";
-      //   position: absolute;
-      //   width: 38px;
-      //   height: 38px;
-      //   opacity: 0;
-      //   margin: auto;
-      //   background: $pepperoni;
-      //   animation: growIn 1s ease-in forwards 6.9s;
-      //   border-radius: 100%;
     }
   }
 }
@@ -110,8 +124,7 @@
     transform: scale(1.1);
   }
   100% {
-    opacity: 1;
-    transform: scale(1);
+    @include end-pizza;
   }
 }
 
