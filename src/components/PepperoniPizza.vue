@@ -23,7 +23,6 @@ const props = defineProps({
   width: 300px;
   height: 300px;
   border-radius: 100%;
-
   border: 15px solid $pizzaBase;
   background-color: $pizzaSauce;
   display: flex;
@@ -55,8 +54,8 @@ const props = defineProps({
   .pepperoni {
     position: relative;
     z-index: auto;
-    width: 200px;
-    height: 200px;
+    width: 240px;
+    height: 240px;
     border: 32px dotted $pepperoni;
     border-radius: 100%;
     z-index: 100;
@@ -83,12 +82,13 @@ const props = defineProps({
     &::before {
       content: "";
       position: absolute;
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       opacity: 0;
       margin: auto;
       overflow: visible;
       border: 32px dotted $pepperoni;
+
       border-radius: 100%;
       animation: growIn 1s ease-in forwards 7s,
         rotateClockwise 30s linear infinite;
@@ -100,11 +100,11 @@ const props = defineProps({
       justify-content: center;
       align-items: center;
       position: absolute;
-      width: 40px;
-      height: 40px;
+      width: 35px;
+      height: 35px;
       opacity: 0;
       overflow: visible;
-      border: 25px dotted $pepperoni;
+      border: 22px dotted $pepperoni;
       border-radius: 100%;
       animation: growIn 1s ease-in forwards 7.2s,
         rotateCounterClockwise 30s linear infinite;

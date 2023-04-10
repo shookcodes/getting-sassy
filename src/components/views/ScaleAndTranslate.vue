@@ -1,7 +1,9 @@
 <template>
-  <div class="intro">
+  <div class="scaleAndTranslate">
     <h2 class="title">
-      Scale & Translate
+      <span class="scale">Scale</span>
+      <span class="and">&</span>
+      <span class="translate">Translate</span>
       <!-- <span>Let's </span> <span>get</span> -->
     </h2>
   </div>
@@ -17,7 +19,7 @@ import Button from "@/components/Button.vue";
 @use "sass:color";
 @import "@/styles/_variables.scss";
 
-.intro {
+.scaleAndTranslate {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,15 +27,49 @@ import Button from "@/components/Button.vue";
   width: 100%;
   height: 100%;
   text-align: center;
+
+  .title {
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+
+    gap: 1rem;
+    overflow: visible;
+  }
+
+  .scale {
+    transform: scale(0);
+    opacity: 0;
+    animation: scaleIn 1s ease-in-out forwards 2s;
+  }
+
+  .and {
+    opacity: 0;
+    animation: fadeIn 0.5s linear forwards 3s;
+  }
+}
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  60% {
+    transform: scale(2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-.title {
-  font-size: 3rem;
-  position: fixed;
-  display: flex;
-  align-items: center;
-  border: 2px solid green;
-  gap: 1rem;
-  overflow: visible;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="intro">
+  <div class="intro" v-if="$route.path === '/'">
     <h1 :class="['title', endAnimation ? 'end-animation' : '']">
       <span>Let's </span> <span>get</span>
       <div class="sassy">
@@ -25,20 +25,18 @@
 <script setup>
 import PepperoniPizza from "@/components/PepperoniPizza.vue";
 import Button from "@/components/Button.vue";
+import { useRoute } from "vue-router";
 
 const props = defineProps({
-  currentIndex: Number,
   endAnimation: Boolean,
+  currentIndex: Number,
 });
 
 const emit = defineEmits({
   "update-index": (index) => typeof index === "number",
 });
 
-console.log("ind from intro", props.currentIndex);
-
 const handleClick = () => {
-  console.log("clicked", props.currentIndex + 1);
   emit("update-index", props.currentIndex + 1);
 };
 </script>
@@ -63,74 +61,75 @@ const handleClick = () => {
 
 .intro {
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
   text-align: center;
-}
 
-.title {
-  font-size: 3rem;
-  display: flex;
-  align-items: center;
-  transform: rotate(-20deg) translate(-15vw, 0);
-  gap: 1rem;
-  overflow: visible;
+  .title {
+    display: absolute;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    transform: rotate(-20deg) translate(-15vw, 0);
+    gap: 1rem;
+    overflow: visible;
 
-  @for $i from 1 through 3 {
-    & :nth-child(#{$i}) {
-      transition: all;
-      opacity: 0;
-      animation: titleEntrance 2.2s ease-in forwards 0.5s;
-      animation-delay: ($i - 1) * 1.2s;
-    }
-  }
-  &.end-animation {
     @for $i from 1 through 3 {
       & :nth-child(#{$i}) {
-        animation: none;
-        @include end-title;
+        transition: all;
+        opacity: 0;
+        animation: titleEntrance 2.2s ease-in forwards 0.5s;
+        animation-delay: ($i - 1) * 1.2s;
+      }
+    }
+    &.end-animation {
+      @for $i from 1 through 3 {
+        & :nth-child(#{$i}) {
+          animation: none;
+          @include end-title;
+        }
       }
     }
   }
-}
 
-.sassy {
-  display: flex;
-  align-items: center;
-  margin-left: 1rem;
-  overflow: visible;
-}
+  .sassy {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    overflow: visible;
+  }
 
-.sass-icon {
-  width: 160px;
-  height: max-content;
-  color: $sassy;
-  transform: rotate(10deg);
-  overflow: visible;
-}
-.sass-y {
-  margin-top: 1rem;
-  margin-left: -1rem;
-  color: $sassy;
-  font-family: $sassyFont;
-  font-weight: bold;
-  font-size: 4.5rem;
-  transform: rotate(-10deg);
-}
+  .sass-icon {
+    width: 160px;
+    height: max-content;
+    color: $sassy;
+    transform: rotate(10deg);
+    overflow: visible;
+  }
+  .sass-y {
+    margin-top: 1rem;
+    margin-left: -1rem;
+    color: $sassy;
+    font-family: $sassyFont;
+    font-weight: bold;
+    font-size: 4.5rem;
+    transform: rotate(-10deg);
+  }
 
-.subline {
-  font-size: 2.5rem;
-  opacity: 0;
-  animation: slideInFromRight 1.5s linear forwards 7s;
+  .subline {
+    font-size: 2.5rem;
+    opacity: 0;
+    animation: slideInFromRight 1.5s linear forwards 7s;
 
-  &.end-animation {
-    @include end-slideIn;
+    &.end-animation {
+      @include end-slideIn;
+    }
   }
 }
-
 .button {
   $buttonBorder: color.adjust($royal, $alpha: -0.2);
   $buttonBorderHover: color.adjust($royal, $alpha: -0.5);
