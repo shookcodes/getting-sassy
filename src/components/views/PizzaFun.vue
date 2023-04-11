@@ -3,10 +3,18 @@
     <h2 class="title">Let's animate some pizza!</h2>
     <div class="display">
       <div class="whole-pizza">
-        <!-- <PizzaCrust />
-        <PizzaCheese />
+        <PizzaCrust />
         <PizzaSauce />
-        <PepperoniGroup /> -->
+        <PizzaCheese />
+        <PepperoniGroup />
+        <Pineapple1 />
+        <Pineapple2 />
+        <Basil />
+        <Pepperoni1 />
+        <Pepperoni2 />
+        <Pepperoni3 />
+        <PineappleHalf1 />
+        <PineappleHalf2 />
       </div>
     </div>
     <Demo> </Demo>
@@ -24,6 +32,8 @@ import {
   Pepperoni3,
   Pineapple1,
   Pineapple2,
+  PineappleHalf1,
+  PineappleHalf2,
   Basil,
 } from "../pizza";
 
@@ -44,19 +54,5 @@ const props = defineProps({
 
   display: flex;
   flex-direction: column;
-
-  .display {
-    // flex-grow: 1;
-    overflow: scroll;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid $sassy;
-    border-radius: 8px;
-    text-align: center;
-    height: 100%;
-    width: 100%;
-    min-height: 70vh;
-    @include sassyShadow();
-  }
 }
 </style>

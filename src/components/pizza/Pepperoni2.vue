@@ -5,7 +5,7 @@
     viewBox="0 0 208 199"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
-    class="pepperoni"
+    class="pepperonis pepperoni2"
     style="
       fill-rule: evenodd;
       clip-rule: evenodd;

@@ -7,6 +7,8 @@ import Pepperoni2 from "./Pepperoni2.vue";
 import Pepperoni3 from "./Pepperoni3.vue";
 import Pineapple1 from "./Pineapple1.vue";
 import Pineapple2 from "./Pineapple2.vue";
+import PineappleHalf1 from "./PineappleHalf1.vue";
+import PineappleHalf2 from "./PineappleHalf2.vue";
 import Basil from "./Basil.vue";
 
 export {
@@ -19,5 +21,7 @@ export {
   Pepperoni3,
   Pineapple1,
   Pineapple2,
+  PineappleHalf1,
+  PineappleHalf2,
   Basil,
 };

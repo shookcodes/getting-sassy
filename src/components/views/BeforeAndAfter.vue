@@ -34,18 +34,5 @@ const props = defineProps({
   width: 100%;
   height: 100%;
   text-align: center;
-
-  .display {
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid $sassy;
-    border-radius: 8px;
-    text-align: center;
-    height: 100%;
-    min-height: 70vh;
-    width: 100%;
-    @include sassyShadow();
-  }
 }
 </style>

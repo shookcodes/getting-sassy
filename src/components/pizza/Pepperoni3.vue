@@ -1,6 +1,6 @@
 <template>
   <svg
-    class="pepperoni"
+    class="pepperonis pepperoni3"
     width="100%"
     height="100%"
     viewBox="0 0 203 198"
