@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { fontAwesomeLib } from "./utils/fontawesome";
 import router from "./router";
 
-// Add your FontAwesome icons to the library
 fontAwesomeLib();
 
 // Create Vue app instance
@@ -16,5 +15,6 @@ app.component("FontAwesomeIcon", FontAwesomeIcon);
 
 // register router for use
 app.use(router);
+
 // Mount your app to the DOM
 app.mount("#app");

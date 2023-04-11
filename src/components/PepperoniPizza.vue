@@ -30,14 +30,16 @@ const props = defineProps({
   align-items: center;
   opacity: 0;
 
-  animation: growIn 1s ease-in forwards 5s;
+  animation: growIn 0.5s ease-in forwards 5s;
 
   &.end-animation {
     @include end-pizza;
+
     &::before {
       @include end-pizza;
     }
   }
+
   &::before {
     content: "";
     position: absolute;
@@ -48,7 +50,7 @@ const props = defineProps({
     margin: 4px;
     border-radius: 100%;
     background-color: $pizzaCheese;
-    animation: growIn 0.8s ease-in forwards 6s;
+    animation: growIn 0.4s ease-in forwards 5.5s;
   }
 
   .pepperoni {
@@ -63,8 +65,9 @@ const props = defineProps({
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: growIn 0.8s ease-in forwards 6.8s,
+    animation: growIn 0.8s ease-in-out forwards 5.9s,
       rotateCounterClockwise 60s linear infinite;
+
     &.end-animation {
       @include end-pizza;
       animation: rotateCounterClockwise 60s linear infinite;
@@ -79,6 +82,7 @@ const props = defineProps({
         animation: rotateCounterClockwise 30s linear infinite;
       }
     }
+
     &::before {
       content: "";
       position: absolute;
@@ -90,7 +94,7 @@ const props = defineProps({
       border: 32px dotted $pepperoni;
 
       border-radius: 100%;
-      animation: growIn 1s ease-in forwards 7s,
+      animation: growIn 0.5s ease-in forwards 6.1s,
         rotateClockwise 30s linear infinite;
     }
 
@@ -106,7 +110,7 @@ const props = defineProps({
       overflow: visible;
       border: 22px dotted $pepperoni;
       border-radius: 100%;
-      animation: growIn 1s ease-in forwards 7.2s,
+      animation: growIn 0.4s ease-in forwards 6.3s,
         rotateCounterClockwise 30s linear infinite;
     }
   }
@@ -116,12 +120,15 @@ const props = defineProps({
   0% {
     transform: scale(0);
   }
+
   10% {
     opacity: 1;
   }
+
   90% {
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
+
   100% {
     @include end-pizza;
   }
@@ -131,6 +138,7 @@ const props = defineProps({
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -140,6 +148,7 @@ const props = defineProps({
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(-360deg);
   }

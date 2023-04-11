@@ -1,38 +1,67 @@
 <template>
   <main>
     <div class="page">
-      <button
-        v-if="currentIndex > 0"
-        class="button prev-button"
-        @click="emit('update-index', currentIndex - 1)">
-        <FontAwesomeIcon icon="fa-solid fa-chevron-left" class="sass-icon" />
-        <span class="sr-only">Go to previous</span>
-      </button>
-
+      <div class="buttons">
+        <button v-if="route.path !== '/'" class="nav-button prev-button" @click="(value) => handlePrevClick(value)">
+          <FontAwesomeIcon icon="fa-solid fa-chevron-left" class="sass-icon" />
+          <span class="sr-only">Go to previous</span>
+        </button>
+        <button v-if="route.path !== '/' && currentIndex < views.length - 1" class="nav-button next-button"
+          @click="(value) => handleNextClick(value)">
+          <FontAwesomeIcon icon="fa-solid fa-chevron-right" class="sass-icon" />
+          <span class="sr-only">Go to next</span>
+        </button>
+      </div>
       <div class="layout">
         <slot />
       </div>
-      <button
-        v-if="currentIndex > 0 && currentIndex < views.length - 1"
-        class="button next-button"
-        @click="setCurrentIndex(currentIndex + 1)">
-        <FontAwesomeIcon icon="fa-solid fa-chevron-right" class="sass-icon" />
-        <span class="sr-only">Go to next</span>
-      </button>
     </div>
   </main>
 </template>
 
 <script setup>
+
 import views from "./views";
+import { useRoute } from "vue-router";
+import { onMounted, watch } from "vue";
 
 const props = defineProps({
   currentIndex: Number,
 });
 
+const route = useRoute()
+
 const emit = defineEmits({
   "update-index": (index) => typeof index === "number",
 });
+
+const handlePrevClick = (value) => {
+
+  emit("update-index", props.currentIndex - 1);
+};
+
+const handleNextClick = (value) => {
+  emit("update-index", props.currentIndex + 1);
+};
+
+function setLocalhostCookie(name, value, daysToExpire) {
+  let cookie = name + '=' + value + '; domain=localhost;';
+  if (daysToExpire) {
+    const date = new Date();
+    date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
+    cookie += 'expires=' + date.toUTCString() + ';';
+  }
+
+  document.cookie = cookie;
+
+}
+
+const routeWatch = watch(() => {
+  const newCookie = setLocalhostCookie('currentIndex', props.currentIndex, 7);
+})
+
+
+
 </script>
 
 <style scoped lang="scss">
@@ -53,29 +82,53 @@ const emit = defineEmits({
 
 .page {
   display: flex;
+  position: relative;
 }
 
-.button {
+.buttons {
   align-self: center;
   border: none;
   color: $sassy;
   font-size: 3rem;
+  width: 95vw;
+  height: max-content;
+  max-width: 1440px;
   background: transparent;
-  cursor: pointer;
-  z-index: 100;
-
-  &:hover {
-    opacity: 0.7;
-  }
   position: fixed;
-  & .prev-button {
-    margin-left: 0;
-    margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+
+
+  .nav-button {
+    border: none;
+    color: $sassy;
+    font-size: 3rem;
+    position: relative;
+    height: max-content;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+
+
+    &.prev-button {
+      margin-left: 0;
+      margin-right: auto;
+
+    }
+
+    &.next-button {
+      margin-right: 0;
+      margin-left: auto;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
-  & .next-button {
-    margin-right: 0;
-    margin-left: auto;
-  }
+
+
 }
 </style>

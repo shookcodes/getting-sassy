@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Livvic&display=swap");
 
 @import "./_variables.scss";
+@import "./_mixins.scss";
 
 :root {
   font-family: $sansFont, system-ui, Avenir, Helvetica, Arial, sans-serif;

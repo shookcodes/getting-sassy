@@ -1,0 +1,42 @@
+.pizza {
+  color: pink;
+  // animation: slide 2s ease-in-out infinite;
+  opacity: 0;
+  animation: slideIn 2s ease-in-out forwards;
+  // animation: slideIn 2s ease-in-out both;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-20px);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(-20px);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 1;
+    transform: translateX(200vw);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: translateX(200vw);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

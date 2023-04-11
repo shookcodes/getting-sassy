@@ -5,19 +5,17 @@
       <span class="and">&</span>
       <span class="translate">Translate</span>
     </h2>
-    <Demo>
-      <PizzaSlice />
-    </Demo>
+    <Demo :code="code" />
   </div>
 </template>
 
 <script setup>
 import Demo from "@/components/Demo.vue";
-import PizzaSlice from "@/components/PizzaSlice.vue";
 
-const props = defineProps({
-  currentIndex: Number,
-});
+const code = `
+  .pizza {
+      transform: translateX(20vw);
+  }`;
 </script>
 
 <style scoped lang="scss">
@@ -27,10 +25,10 @@ const props = defineProps({
 .scaleAndTranslate {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   width: 100%;
-  height: max-content;
+  height: 100%;
   text-align: center;
 
   .title {
@@ -59,20 +57,16 @@ const props = defineProps({
     animation: slideInFromRight 1s linear forwards 2.2s;
   }
 }
-
 @keyframes scaleIn {
   0% {
     transform: scale(0);
   }
-
   10% {
     opacity: 1;
   }
-
   60% {
     transform: scale(2);
   }
-
   100% {
     opacity: 1;
     transform: scale(1);
@@ -83,7 +77,6 @@ const props = defineProps({
   0% {
     opacity: 0;
   }
-
   100% {
     opacity: 1;
   }
@@ -93,7 +86,6 @@ const props = defineProps({
   0% {
     opacity: 0;
   }
-
   100% {
     opacity: 1;
   }
@@ -104,7 +96,6 @@ const props = defineProps({
     opacity: 0;
     transform: translateX(200vw);
   }
-
   10% {
     opacity: 1;
   }

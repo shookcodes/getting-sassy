@@ -1,0 +1,4 @@
+@import "./variables.scss";
+@mixin sassyShadow {
+  filter: drop-shadow(1px 2px 0.2rem $sassy);
+}

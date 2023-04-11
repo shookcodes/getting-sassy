@@ -6,12 +6,14 @@ const routes = [
   {
     path: "/",
     name: "Intro",
-    component: () => import("./components/views/Intro.vue"),
+    component: Intro,
+    // component: () => import("./components/views/Intro.vue"),
   },
   {
     path: "/scale-and-translate",
     name: "Scale And Translate",
-    component: () => import("./components/views/ScaleAndTranslate.vue"),
+    component: ScaleAndTranslate,
+    // component: () => import("./components/views/ScaleAndTranslate.vue"),
   },
 ];
 

@@ -25,7 +25,6 @@
 <script setup>
 import PepperoniPizza from "@/components/PepperoniPizza.vue";
 import Button from "@/components/Button.vue";
-import { useRoute } from "vue-router";
 
 const props = defineProps({
   endAnimation: Boolean,
@@ -43,6 +42,7 @@ const handleClick = () => {
 
 <style scoped lang="scss">
 @use "sass:color";
+@import "@/styles/_mixins.scss";
 @import "@/styles/_variables.scss";
 
 @mixin end-title {
@@ -86,6 +86,7 @@ const handleClick = () => {
         animation-delay: ($i - 1) * 1.2s;
       }
     }
+
     &.end-animation {
       @for $i from 1 through 3 {
         & :nth-child(#{$i}) {
@@ -110,6 +111,7 @@ const handleClick = () => {
     transform: rotate(10deg);
     overflow: visible;
   }
+
   .sass-y {
     margin-top: 1rem;
     margin-left: -1rem;
@@ -123,28 +125,30 @@ const handleClick = () => {
   .subline {
     font-size: 2.5rem;
     opacity: 0;
-    animation: slideInFromRight 1.5s linear forwards 7s;
+    animation: slideInFromRight 1.5s linear forwards 6.3s;
 
     &.end-animation {
       @include end-slideIn;
     }
   }
 }
+
 .button {
-  $buttonBorder: color.adjust($royal, $alpha: -0.2);
-  $buttonBorderHover: color.adjust($royal, $alpha: -0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   border: none;
   align-self: end;
-  background-color: #fffff7;
+  background-color: transparent;
   background-clip: text;
-  font-size: 1.2rem;
-  margin-right: -5rem;
+  font-size: 1.5rem;
+  // margin-right: -5rem;
+
+  color: $sassy;
   border-radius: 10px;
-  border: 2px solid $buttonBorder;
+  border: 2px solid lighten($royal, 20%);
+
   padding: 0.2rem 1.5rem;
   line-height: 3rem;
   opacity: 0;
@@ -152,7 +156,7 @@ const handleClick = () => {
 
   margin-top: 40px;
   animation: slideInFromRight 1.5s linear forwards 7.5s;
-  color: transparent;
+
   cursor: pointer;
 
   &.end-animation {
@@ -160,15 +164,17 @@ const handleClick = () => {
   }
 
   & > svg {
-    color: #fffff7;
-    background: inherit;
+    color: $sassy;
+    background: transparent;
     transition: ease-in-out 0.2s;
   }
 
   &:hover {
-    border: 2px solid $buttonBorderHover;
+    color: $offWhite;
+    border: 2px solid $sassy;
     padding: 0.2rem 1.8rem 0.2rem 1.5rem;
-    margin-right: -5.8rem;
+    margin-right: -0.8rem;
+    @include sassyShadow();
 
     & > svg {
       transform: translateX(8px);
@@ -181,13 +187,16 @@ const handleClick = () => {
     opacity: 0;
     transform: translate(120vw, -100vh);
   }
+
   20% {
     opacity: 1;
   }
+
   80% {
     font-weight: bold;
     transform: scale(1.5);
   }
+
   100% {
     @include end-title;
   }
@@ -198,12 +207,15 @@ const handleClick = () => {
     opacity: 0;
     transform: translateX(120vw) skew(-20deg);
   }
+
   10% {
     opacity: 1;
   }
+
   70% {
     transform: translateX(0) skew(-20deg);
   }
+
   80% {
     transform: translateX(0) scale(1.2);
   }
