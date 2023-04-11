@@ -37,6 +37,7 @@ onMounted(() => {
   .display {
     width: 100%;
     height: 100%;
+    min-height: 70vh;
     display: flex;
     flex-grow: 1;
     // position: relative;

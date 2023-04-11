@@ -1,7 +1,7 @@
 <template>
   <div class="before-after">
     <h2 class="title">
-      Before & After
+      Before & After Text Fun
       <!-- <span class="scale">Scale</span>
         <span class="and">&</span>
         <span class="translate">Translate</span> -->
@@ -31,7 +31,6 @@ const props = defineProps({
   flex-direction: column;
   justify-content: starts;
 
-  align-items: center;
   width: 100%;
   height: 100%;
   text-align: center;
@@ -44,19 +43,9 @@ const props = defineProps({
     border-radius: 8px;
     text-align: center;
     height: 100%;
+    min-height: 70vh;
     width: 100%;
     @include sassyShadow();
-  }
-
-  .title {
-    font-size: 3rem;
-    display: flex;
-    align-items: center;
-
-    gap: 1rem;
-    overflow: visible;
-    opacity: 0;
-    animation: slideInFromRight 1.5s ease-in-out forwards 1s;
   }
 }
 </style>

@@ -33,16 +33,5 @@ const props = defineProps({
 
   display: flex;
   flex-direction: column;
-
-  .title {
-    font-size: 3rem;
-    display: flex;
-    align-items: center;
-
-    gap: 1rem;
-    overflow: visible;
-    opacity: 0;
-    animation: slideInFromRight 1.5s ease-in-out forwards 1s;
-  }
 }
 </style>

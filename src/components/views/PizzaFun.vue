@@ -1,16 +1,12 @@
 <template>
   <div class="pizza-fun">
-    <h2 class="title">
-      Let's animate some pizza!
-      <!-- Positioning: Absolute & Relative -->
-      <!-- <span class="scale">Scale</span>
-      <span class="and">&</span>
-      <span class="translate">Translate</span> -->
-    </h2>
+    <h2 class="title">Let's animate some pizza!</h2>
     <div class="display">
       <div class="whole-pizza">
-        <PizzaCrust />
+        <!-- <PizzaCrust />
         <PizzaCheese />
+        <PizzaSauce />
+        <PepperoniGroup /> -->
       </div>
     </div>
     <Demo> </Demo>
@@ -18,7 +14,18 @@
 </template>
 
 <script setup>
-import { PizzaCrust, PizzaCheese } from "../pizza";
+import {
+  PizzaCrust,
+  PizzaSauce,
+  PizzaCheese,
+  PepperoniGroup,
+  Pepperoni1,
+  Pepperoni2,
+  Pepperoni3,
+  Pineapple1,
+  Pineapple2,
+  Basil,
+} from "../pizza";
 
 const props = defineProps({
   currentIndex: Number,
@@ -38,19 +45,9 @@ const props = defineProps({
   display: flex;
   flex-direction: column;
 
-  .title {
-    font-size: 3rem;
-    display: flex;
-    align-items: center;
-
-    gap: 1rem;
-    overflow: visible;
-    opacity: 0;
-    animation: slideInFromRight 1.5s ease-in-out forwards 1s;
-  }
-
   .display {
     // flex-grow: 1;
+    overflow: scroll;
     justify-content: center;
     align-items: center;
     border: 2px solid $sassy;
@@ -58,6 +55,7 @@ const props = defineProps({
     text-align: center;
     height: 100%;
     width: 100%;
+    min-height: 70vh;
     @include sassyShadow();
   }
 }

@@ -1,9 +1,10 @@
 .whole-pizza {
   width: 30vmax;
-  height: auto;
+  height: 100%;
   margin: auto;
   border: 2px solid green;
   position: relative;
+  overflow: scroll;
 }
 
 .pizza-crust {

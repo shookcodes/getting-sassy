@@ -1,6 +1,6 @@
 <template>
   <div class="intro" v-if="$route.path === '/'">
-    <h1 :class="['title', endAnimation ? 'end-animation' : '']">
+    <h1 :class="['intro-title', endAnimation ? 'end-animation' : '']">
       <span>Let's </span> <span>get</span>
       <div class="sassy">
         <FontAwesomeIcon icon="fa-brands fa-sass" class="sass-icon" />
@@ -56,7 +56,7 @@ const handleClick = () => {
   height: 100%;
   text-align: center;
 
-  .title {
+  .intro-title {
     display: absolute;
     font-size: 3rem;
     display: flex;
@@ -64,6 +64,7 @@ const handleClick = () => {
     transform: rotate(-20deg) translate(-15vw, 0);
     gap: 1rem;
     overflow: visible;
+    transform-origin: center;
 
     @for $i from 1 through 3 {
       & :nth-child(#{$i}) {

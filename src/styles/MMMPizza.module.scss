@@ -16,7 +16,8 @@
     width: 100%;
     text-transform: uppercase;
     color: $offWhite;
-    animation: slideInFromRight 1s ease-in-out;
+    opacity: 0;
+    animation: slideInFromRight 1s ease-in-out forwards 2s;
     // -webkit-text-stroke: 1px $sassy;
     // &::before {
     //   content: attr(data-text);

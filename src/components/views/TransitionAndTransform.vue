@@ -30,20 +30,9 @@ const props = defineProps({
   display: flex;
   flex-direction: column;
   justify-content: start;
-  align-items: center;
+
   width: 100%;
   height: max-content;
   text-align: center;
-
-  .title {
-    font-size: 3rem;
-    display: flex;
-    align-items: center;
-
-    gap: 1rem;
-    overflow: visible;
-    opacity: 0;
-    animation: slideInFromRight 1.5s ease-in-out forwards 1s;
-  }
 }
 </style>
