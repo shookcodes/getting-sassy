@@ -1,4 +1,6 @@
 import Intro from "./Intro.vue";
-import ScaleAndTranslate from "./ScaleAndTranslate.vue";
+import TransitionAndTransform from "./TransitionAndTransform.vue";
+import Positioning from "./Positioning.vue";
+import BeforeAndAfter from "./BeforeAndAfter.vue";
 
-export default [Intro, ScaleAndTranslate];
+export default [Intro, TransitionAndTransform, Positioning, BeforeAndAfter];

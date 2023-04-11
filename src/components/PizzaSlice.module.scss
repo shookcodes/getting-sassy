@@ -1,9 +1,52 @@
-.pizza {
-  color: pink;
-  // animation: slide 2s ease-in-out infinite;
-  opacity: 0;
-  animation: slideIn 2s ease-in-out forwards;
-  // animation: slideIn 2s ease-in-out both;
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixins.scss";
+
+// TRANSFORM / TRANSITION
+.transition-transform {
+  .pizza {
+    color: pink;
+    opacity: 0;
+    animation: slideIn 2s ease-in-out forwards 2s;
+    // animation: scale 2s ease-in-out infinite 2s;
+    // animation: slideIn 2s ease-in-out both;
+  }
+}
+
+// RELATIVE / ABSOLUTE POSITIONING
+.positioning {
+  .pizza-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition: height 0.5s ease-in-out;
+    @media screen and (min-width: 768px) {
+      // animation: position 2s ease-in-out;
+      justify-content: flex-end;
+      align-items: flex-end;
+      width: 100%;
+      height: 70vh;
+      flex-grow: 1;
+    }
+
+    & .pizza {
+      color: pink;
+      position: relative;
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
+
+@keyframes position {
+  from {
+    position: relative;
+  }
+  to {
+  }
 }
 
 @keyframes slide {
@@ -30,13 +73,19 @@
   }
 }
 
-@keyframes scaleIn {
+@keyframes scale {
   0% {
-    transform: translateX(200vw);
+    opacity: 1;
+    transform: scale(0);
   }
 
+  60% {
+    transform: scale(2);
+  }
   100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: scale(0);
   }
 }
+
+// animation: slide 2s ease-in-out infinite;

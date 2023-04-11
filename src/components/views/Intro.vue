@@ -42,22 +42,9 @@ const handleClick = () => {
 
 <style scoped lang="scss">
 @use "sass:color";
+@import "@/styles/_animations.scss";
 @import "@/styles/_mixins.scss";
 @import "@/styles/_variables.scss";
-
-@mixin end-title {
-  animation: none;
-  opacity: 1;
-  font-weight: normal;
-  transform: scale(1) translate(0);
-}
-
-@mixin end-slideIn {
-  animation: none;
-  opacity: 1;
-  font-weight: normal;
-  transform: skew(0);
-}
 
 .intro {
   display: flex;
@@ -179,49 +166,6 @@ const handleClick = () => {
     & > svg {
       transform: translateX(8px);
     }
-  }
-}
-
-@keyframes titleEntrance {
-  0% {
-    opacity: 0;
-    transform: translate(120vw, -100vh);
-  }
-
-  20% {
-    opacity: 1;
-  }
-
-  80% {
-    font-weight: bold;
-    transform: scale(1.5);
-  }
-
-  100% {
-    @include end-title;
-  }
-}
-
-@keyframes slideInFromRight {
-  0% {
-    opacity: 0;
-    transform: translateX(120vw) skew(-20deg);
-  }
-
-  10% {
-    opacity: 1;
-  }
-
-  70% {
-    transform: translateX(0) skew(-20deg);
-  }
-
-  80% {
-    transform: translateX(0) scale(1.2);
-  }
-
-  100% {
-    @include end-slideIn();
   }
 }
 </style>

@@ -1,4 +1,19 @@
 @import "./variables.scss";
 @mixin sassyShadow {
-  filter: drop-shadow(1px 2px 0.2rem $sassy);
+  // filter: drop-shadow();
+  box-shadow: inset 1px 2px 0.2rem $sassy, 1px 2px 0.2rem $sassy;
+}
+
+@mixin end-title {
+  animation: none;
+  opacity: 1;
+  font-weight: normal;
+  transform: scale(1) translate(0);
+}
+
+@mixin end-slideIn {
+  animation: none;
+  opacity: 1;
+  font-weight: normal;
+  transform: skew(0);
 }

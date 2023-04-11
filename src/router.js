@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Intro from "./components/views/Intro.vue";
-import ScaleAndTranslate from "./components/views/ScaleAndTranslate.vue";
-
+import TransitionAndTransform from "./components/views/TransitionAndTransform.vue";
+import Positioning from "./components/views/Positioning.vue";
+import BeforeAndAfter from "./components/views/BeforeAndAfter.vue";
 const routes = [
   {
     path: "/",
@@ -10,10 +11,22 @@ const routes = [
     // component: () => import("./components/views/Intro.vue"),
   },
   {
-    path: "/scale-and-translate",
-    name: "Scale And Translate",
-    component: ScaleAndTranslate,
-    // component: () => import("./components/views/ScaleAndTranslate.vue"),
+    path: "/transition-and-transform",
+    name: "Transition and Transform",
+    component: TransitionAndTransform,
+    // component: () => import("./components/views/TransitionAndTransform.vue"),
+  },
+  {
+    path: "/positioning",
+    name: "Positioning",
+    component: Positioning,
+    // component: () => import("./components/views/TransitionAndTransform.vue"),
+  },
+  {
+    path: "/before-and-after",
+    name: "Before and After",
+    component: BeforeAndAfter,
+    // component: () => import("./components/views/TransitionAndTransform.vue"),
   },
 ];
 

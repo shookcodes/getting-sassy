@@ -1,20 +1,20 @@
 <template>
-  <div class="positioning">
+  <div class="before-after">
     <h2 class="title">
-      Positioning: Absolute & Relative
+      Before & After
       <!-- <span class="scale">Scale</span>
-      <span class="and">&</span>
-      <span class="translate">Translate</span> -->
+        <span class="and">&</span>
+        <span class="translate">Translate</span> -->
     </h2>
-    <Demo>
-      <PizzaSlice class="pizza-container" />
-    </Demo>
+    <div class="display">
+      <MMMPizza />
+    </div>
   </div>
 </template>
 
 <script setup>
 import Demo from "@/components/Demo.vue";
-import PizzaSlice from "@/components/PizzaSlice.vue";
+import MMMPizza from "@/components/MMMPizza.vue";
 
 const props = defineProps({
   currentIndex: Number,
@@ -26,13 +26,27 @@ const props = defineProps({
 @import "@/styles/_variables.scss";
 @import "@/styles/_animations.scss";
 
-.positioning {
+.before-after {
+  display: flex;
+  flex-direction: column;
+  justify-content: starts;
+
+  align-items: center;
   width: 100%;
   height: 100%;
   text-align: center;
 
-  display: flex;
-  flex-direction: column;
+  .display {
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid $sassy;
+    border-radius: 8px;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    @include sassyShadow();
+  }
 
   .title {
     font-size: 3rem;

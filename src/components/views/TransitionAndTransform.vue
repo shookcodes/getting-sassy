@@ -1,13 +1,13 @@
 <template>
-  <div class="positioning">
+  <div class="transition-transform">
     <h2 class="title">
-      Positioning: Absolute & Relative
+      Transitions & Transform
       <!-- <span class="scale">Scale</span>
       <span class="and">&</span>
       <span class="translate">Translate</span> -->
     </h2>
     <Demo>
-      <PizzaSlice class="pizza-container" />
+      <PizzaSlice />
     </Demo>
   </div>
 </template>
@@ -26,13 +26,14 @@ const props = defineProps({
 @import "@/styles/_variables.scss";
 @import "@/styles/_animations.scss";
 
-.positioning {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-
+.transition-transform {
   display: flex;
   flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  height: max-content;
+  text-align: center;
 
   .title {
     font-size: 3rem;
