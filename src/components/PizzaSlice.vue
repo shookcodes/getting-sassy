@@ -40,5 +40,5 @@
   color: $offWhite;
 }
 
-@import "./PizzaSlice.module.scss";
+@import "@/styles/PizzaSlice.module.scss";
 </style>

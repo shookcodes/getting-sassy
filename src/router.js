@@ -3,6 +3,7 @@ import Intro from "./components/views/Intro.vue";
 import TransitionAndTransform from "./components/views/TransitionAndTransform.vue";
 import Positioning from "./components/views/Positioning.vue";
 import BeforeAndAfter from "./components/views/BeforeAndAfter.vue";
+import PizzaFun from "./components/views/PizzaFun.vue";
 const routes = [
   {
     path: "/",
@@ -26,6 +27,12 @@ const routes = [
     path: "/before-and-after",
     name: "Before and After",
     component: BeforeAndAfter,
+    // component: () => import("./components/views/TransitionAndTransform.vue"),
+  },
+  {
+    path: "/pizza-fun",
+    name: "Pizza Fun",
+    component: PizzaFun,
     // component: () => import("./components/views/TransitionAndTransform.vue"),
   },
 ];

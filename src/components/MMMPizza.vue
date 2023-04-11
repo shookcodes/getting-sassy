@@ -10,5 +10,5 @@ const text = "MMMM Pizza";
 </script>
 
 <style scoped lang="scss">
-@import "./MMMPizza.module.scss";
+@import "@/styles/MMMPizza.module.scss";
 </style>
